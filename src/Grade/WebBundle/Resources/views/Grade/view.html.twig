@@ -1,0 +1,10 @@
+{% extends 'GradeWebBundle::template.html.twig' %}
+
+{% block body %}
+<h1>Welcome to the Grade:View page</h1>
+<ul>
+    {% for grade in grades %}
+        <li>{{ grade.value }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

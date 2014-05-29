@@ -1,0 +1,5 @@
+grade_web:
+    resource: "@GradeWebBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

@@ -19,7 +19,14 @@ class AppKernel extends Kernel
             
         	new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
         	new FOS\UserBundle\FOSUserBundle(),
-
+        		
+        	new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
+        	new Mopa\Bundle\BootstrapSandboxBundle\MopaBootstrapSandboxBundle(),
+        	new Liip\ThemeBundle\LiipThemeBundle(),
+        	new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+        	new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+        	new Craue\FormFlowBundle\CraueFormFlowBundle(),
+        		
         	new Grade\WebBundle\GradeWebBundle(),
             new Grade\UserBundle\GradeUserBundle(),
         );

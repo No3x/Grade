@@ -18,8 +18,10 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             
         	new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+        	new FOS\UserBundle\FOSUserBundle(),
 
-        	new Grade\WebBundle\GradeWebBundle()
+        	new Grade\WebBundle\GradeWebBundle(),
+            new Grade\UserBundle\GradeUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

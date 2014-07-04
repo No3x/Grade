@@ -6,13 +6,50 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class GradeControllerTest extends WebTestCase
 {
-    public function testView()
+    /*
+    public function testCompleteScenario()
     {
+        // Create a new client to browse the application
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/Grade/view');
+        // Create a new entry in the database
+        $crawler = $client->request('GET', '/grade/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /grade/");
+        $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
-        $this->assertTrue($crawler->filter('html:contains("Test value :)")')->count() > 0);
+        // Fill in the form and submit it
+        $form = $crawler->selectButton('Create')->form(array(
+            'grade_webbundle_gradetype[field_name]'  => 'Test',
+            // ... other fields to fill
+        ));
+
+        $client->submit($form);
+        $crawler = $client->followRedirect();
+
+        // Check data in the show view
+        $this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
+
+        // Edit the entity
+        $crawler = $client->click($crawler->selectLink('Edit')->link());
+
+        $form = $crawler->selectButton('Edit')->form(array(
+            'grade_webbundle_gradetype[field_name]'  => 'Foo',
+            // ... other fields to fill
+        ));
+
+        $client->submit($form);
+        $crawler = $client->followRedirect();
+
+        // Check the element contains an attribute with value equals "Foo"
+        $this->assertGreaterThan(0, $crawler->filter('[value="Foo"]')->count(), 'Missing element [value="Foo"]');
+
+        // Delete the entity
+        $client->submit($crawler->selectButton('Delete')->form());
+        $crawler = $client->followRedirect();
+
+        // Check the entity has been delete on the list
+        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
     }
 
+    */
 }

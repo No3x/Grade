@@ -8,7 +8,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Grade\WebBundle\Entity\Grade;
 use Grade\WebBundle\Entity\Subject;
 
-class LoadGradeData extends AbstractFixture implements OrderedFixtureInterface {
+class LoadSubjectData extends AbstractFixture implements OrderedFixtureInterface {
 	
 	/*
 	 * (non-PHPdoc)
@@ -16,21 +16,20 @@ class LoadGradeData extends AbstractFixture implements OrderedFixtureInterface {
 	 */
 	public function getOrder() {
 		// TODO: Auto-generated method stub
-		return 2;
+		return 1;
 	}
 	
 	/**
-	 * Loads example Grades.
+	 * Loads example Subjects.
 	 * {@inheritDoc}
 	 */
 	public function load(ObjectManager $manager) {
-		$grade = new Grade ();
-		$grade->setValue ( "Test value :)" );
-		$grade->setGuid ( "A-really-cool-test-guid" );
+		$subject1 = new Subject ();
+		$subject1->setName ( 'Math' );
 		
-		$grade->addSubject ( $this->getReference ( 'subject1' ) );
-		
-		$manager->persist ( $grade );
+		$manager->persist ( $subject1 );
 		$manager->flush ();
+		
+		$this->addReference ( 'subject1', $subject1 );
 	}
 }

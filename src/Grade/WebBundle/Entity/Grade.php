@@ -34,7 +34,17 @@ class Grade
      * @ORM\Column(name="guid", type="guid")
      */
     private $guid;
+    
+    /**
+     * @var subjects
+     * @ORM\ManyToMany(targetEntity="Subject", mappedBy="grades")
+     * @ORM\JoinTable(name="grades_subjects")
+     */
+    private $subjects;
 
+    function __construct() {
+    	$this->subjects = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -91,4 +101,16 @@ class Grade
     {
         return $this->guid;
     }
+    
+    /**
+     * Add subject
+     *
+     * @param \Grade\WebBundle\Entity\Subject $subjects
+     */
+    public function addSubject(\Grade\WebBundle\Entity\Subject $subjects)
+    {
+    	$this->subjects[] = $subjects;
+    }
+    
+    
 }
